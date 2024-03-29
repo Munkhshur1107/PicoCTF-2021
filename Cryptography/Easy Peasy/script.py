@@ -5,7 +5,7 @@
 from pwn import *
 
 # Set up pwntools for the correct architecture
-context.update(arch='i386')
+context.update otp.py
 exe = 'otp.py'
 
 # Many built-in settings can be controlled on the command-line and show up
