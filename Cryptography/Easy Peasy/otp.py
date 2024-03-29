@@ -2,7 +2,7 @@
 import os.path
 
 KEY_FILE = "key"
-KEY_LEN = 50000
+KEY_LEN = 40000
 FLAG_FILE = "flag"
 
 
@@ -31,6 +31,27 @@ def encrypt(key_location):
 
 	kf = open(KEY_FILE, "rb").read()
 
+	if stop = KEY_LEN:
+		stop = stop % KEY_LEN
+		key = kf[start:] + kf[:stop]
+	else:
+		key = kf[start:stop]
+	key_location = stop
+
+	result = list(map(lambda p, k: "{:02x}".format(ord(p) ^ k), ui, key))
+
+	print("Here ya go!\n{}\n".format("".join(result)))
+
+	return key_location
+
+
+print("******************Welcome to our OTP implementation!******************")
+c = startup(0)
+while c >= 0:
+	c = encrypt(c)
+
+	kf = open(KEY_FILE, "rb").read()
+
 	if stop >= KEY_LEN:
 		stop = stop % KEY_LEN
 		key = kf[start:] + kf[:stop]
@@ -49,3 +70,4 @@ print("******************Welcome to our OTP implementation!******************")
 c = startup(0)
 while c >= 0:
 	c = encrypt(c)
+	pwn template --host mercury.picoctf.net --port 20266 otp.py
