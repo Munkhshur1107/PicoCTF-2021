@@ -55,7 +55,7 @@ flag_len = int(len(encrypted_flag)/2)
 
 # Create a filler payload to reset the `c` variable in `otp.py` to 0 so we
 # can use the same key that was used to encrypt the flag.
-filler = "a"*(50000-flag_len)
+filler = "a"*(40000-flag_len)
 io.sendlineafter("What data would you like to encrypt? ", filler)
 
 def xor_list_str(a, b):
